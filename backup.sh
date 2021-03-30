@@ -36,4 +36,5 @@ for service in $APP_LIST; do
     tar --exclude="node_modules" --exclude=".npm" -cjf - /mnt/appdata/$service | gpg --trust-model always -e -r <KEY_ID> -o /opt/backup/data/$BACKUP_FOLDER/appdata/$service.tar.bz2.gpg 
 done
 
-gdrive sync upload /opt/backup/data/ $BACKUP_FOLDER_ID
+/usr/local/go/bin/gdrive sync upload /opt/backup/data/$BACKUP_FOLDER $BACKUP_FOLDER_ID
+rm /opt/backup/data/$BACKUP_FOLDER -rf
